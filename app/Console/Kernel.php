@@ -2,6 +2,10 @@
 
 namespace App\Console;
 
+use App\Console\Commands\DemoCommand;
+use App\Console\Commands\DispatchCommand;
+use App\Console\Commands\SecretCommand;
+use App\Console\Commands\TestCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +17,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        TestCommand::class,
+        SecretCommand::class,
+        DemoCommand::class,
+        DispatchCommand::class,
     ];
 
     /**
@@ -33,10 +40,10 @@ class Kernel extends ConsoleKernel
      *
      * @return void
      */
-    protected function commands()
-    {
-        $this->load(__DIR__.'/Commands');
-
-        require base_path('routes/console.php');
-    }
+    // protected function commands()
+    // {
+    //     $this->load(__DIR__.'/Commands');
+    //
+    //     require base_path('routes/console.php');
+    // }
 }

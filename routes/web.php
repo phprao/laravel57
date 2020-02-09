@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+$router->group(['namespace' => 'Main'], function () use ($router) {
+
+    $router->get('/info', [
+        'as'   => 'info',
+        'uses' => 'TestController@info'
+    ]);
+
+});
+
