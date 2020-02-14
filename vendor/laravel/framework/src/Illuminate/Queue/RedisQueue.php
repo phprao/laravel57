@@ -61,6 +61,7 @@ class RedisQueue extends Queue implements QueueContract
         $this->blockFor = $blockFor;
         $this->connection = $connection;
         $this->retryAfter = $retryAfter;
+        var_dump($retryAfter);
     }
 
     /**
@@ -186,7 +187,7 @@ class RedisQueue extends Queue implements QueueContract
     protected function migrate($queue)
     {
         $this->migrateExpiredJobs($queue.':delayed', $queue);
-
+var_dump($this->retryAfter);
         if (! is_null($this->retryAfter)) {
             $this->migrateExpiredJobs($queue.':reserved', $queue);
         }
@@ -201,6 +202,7 @@ class RedisQueue extends Queue implements QueueContract
      */
     public function migrateExpiredJobs($from, $to)
     {
+        var_dump('here');
         return $this->getConnection()->eval(
             LuaScripts::migrateExpiredJobs(), 2, $from, $to, $this->currentTime()
         );

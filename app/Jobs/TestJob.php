@@ -32,5 +32,6 @@ class TestJob implements ShouldQueue
     public function handle()
     {
         Log::info($this->data);
+//        sleep(100);
     }
 }

@@ -39,7 +39,20 @@ class DispatchCommand extends Command
      */
     public function handle()
     {
-        $data = ['data'=>Str::random(10), 'time'=>date('Y-m-d H:i:s')];
+        $this->test1();
+//        $this->test2();
+    }
+
+    // 延迟执行
+    public function test2()
+    {
+        $data = ['data' => Str::random(10), 'time' => date('Y-m-d H:i:s')];
+        dispatch(new TestJob($data))->delay(now()->addMinute(20))->onConnection('redis')->onQueue('testqueue');
+    }
+
+    public function test1()
+    {
+        $data = ['data' => Str::random(10), 'time' => date('Y-m-d H:i:s')];
         dispatch(new TestJob($data))->onConnection('redis')->onQueue('testqueue');
     }
 }

@@ -1,0 +1,11 @@
+数据库连接池：php-cp
+
+https://www.cnblogs.com/xiaoleiel/p/8324213.html
+
+https://www.cnblogs.com/GaZeon/p/7055611.html
+
+https://my.oschina.net/mickelfeng/blog/1031147
+
+https://github.com/swoole/php-cp
+上一次提交时3年前了，适合的版本是php5.x
+

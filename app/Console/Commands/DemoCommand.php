@@ -6,6 +6,7 @@ use App\Exports\CollectionExport;
 use App\Exports\UsersExport;
 use App\Model\CzMagazineTitle;
 use App\Model\MapCity;
+use App\Model\Users;
 use App\Services\DataProcessor\AddEndSignature;
 use App\Services\DataProcessor\AddPreTime;
 use App\Services\DataProcessor\DataTransfer;
@@ -48,7 +49,21 @@ class DemoCommand extends Command
      */
     public function handle()
     {
-        $this->test7();
+        $this->test10();
+    }
+
+    function test10(){
+        $phone = '15919906312';
+        if(!preg_match("/^1[3456789]{1}\d{9}$/", $phone)){
+            $this->info('false');
+        }else{
+            $this->info('true');
+        }
+    }
+
+    function test9(){
+        $list = Users::orderBy('id', 'desc')->limit(1)->get();
+        $this->info($list->count());
     }
 
     function test8(){
